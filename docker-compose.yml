@@ -44,7 +44,7 @@ services:
       certonly --webroot
       -w /var/www/certbot
       -d whatthedoodle.jussinevavuori.com
-      --email you@example.com --agree-tos --no-eff-email
+      --email jussi@nevavuori.fi --agree-tos --no-eff-email
 
 volumes:
   certbot-webroot:
