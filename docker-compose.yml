@@ -32,3 +32,15 @@ services:
       - wtd-client
       - wtd-server
     restart: unless-stopped
+
+  wtd-certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - certbot-www:/var/www/certbot
+      - letsencrypt:/etc/letsencrypt
+    entrypoint: sh
+    command: -c "trap exit TERM; while :; do sleep 12h & wait $!; certbot renew --webroot -w /var/www/certbot; nginx -s reload || true; done"
+
+volumes:
+  certbot-www:
+  letsencrypt:
