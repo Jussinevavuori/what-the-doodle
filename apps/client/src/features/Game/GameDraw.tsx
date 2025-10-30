@@ -41,7 +41,7 @@ export function GameDraw(props: GameDrawProps) {
             drawingId: drawing.id,
             jpgBase64: await blobToBase64(
               // Make sure to optimize the image before sending
-              await optimizeClientSideFile(jpgBlob, { maxDim: 360 }),
+              await optimizeClientSideFile(jpgBlob, { maxDim: 480 }),
             ),
           });
         }}
