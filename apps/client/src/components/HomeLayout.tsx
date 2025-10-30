@@ -1,5 +1,7 @@
 import Logo from "@/assets/logo.svg";
+import { UserIdAtom } from "@/stores/UserIdAtom";
 import { Link } from "@tanstack/react-router";
+import { useAtom } from "@xstate/store/react";
 
 export type HomeLayoutProps = {
   children?: React.ReactNode;
@@ -39,6 +41,8 @@ export function HomeLayout(props: HomeLayoutProps) {
             GitHub
           </a>
         </p>
+
+        <p className="text-xs opacity-40">User ID: {useAtom(UserIdAtom)}</p>
       </div>
     </main>
   );
