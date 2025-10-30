@@ -13,4 +13,15 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+
+  // build optimizations (ChatGPT)
+  build: {
+    sourcemap: false, // default is false; ensure it’s off in CI
+    target: "es2022",
+    cssMinify: "esbuild", // fastest
+    minify: "esbuild", // fastest
+  },
+  esbuild: {
+    legalComments: "none",
+  },
 });
