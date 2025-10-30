@@ -49,10 +49,19 @@ export const WebSocketClient = {
    * Send typesafe message to server
    */
   send(message: ClientMessage) {
-    try {
-      this.ws.send(JSON.stringify(message));
-    } catch (e) {
-      console.error("Failed to send message to server:", e);
+    function send() {
+      try {
+        ws.send(JSON.stringify(message));
+      } catch (e) {
+        console.error("Failed to send message to server:", e);
+      }
+    }
+
+    // Send once connection is open or immediately if already open
+    if (this.ws.readyState !== WebSocket.OPEN) {
+      ws.addEventListener("open", send, { once: true });
+    } else {
+      send();
     }
   },
 
