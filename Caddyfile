@@ -1,15 +1,15 @@
 whatthedoodle.jussinevavuori.com {
   encode zstd gzip
 
-  @api path /api*                # API -> Bun server
+  # API -> Bun server
+  @api path /api*
   handle @api {
     reverse_proxy http://wtd-server:8080
   }
 
-  handle {                       # SPA from disk
-    root * /srv/static
-    try_files {path} /index.html
-    file_server
+  # Frontend -> NGINX server
+  handle {
+    reverse_proxy http://wtd-client:5173
   }
 
   header {

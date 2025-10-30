@@ -29,8 +29,6 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy-data:/data
       - caddy-config:/config
-      # mount your built client
-      - ./apps/client/dist:/srv/static:ro
     depends_on:
       - wtd-server
     networks:
