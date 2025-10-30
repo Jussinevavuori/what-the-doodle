@@ -1,0 +1,193 @@
+/* Lucide icon default settings (size, shrink-0 and loader animations). At top for lower specificity. */
+@layer base {
+  :where(.lucide) {
+    @apply size-4 shrink-0;
+  }
+  :where(.lucide-loader-circle) {
+    @apply animate-spin opacity-50;
+  }
+  :where(.lucide-loader) {
+    @apply animate-spin opacity-50;
+  }
+}
+
+@import "tailwindcss";
+
+@theme {
+  /* Breakpoints */
+  --breakpoint-xs: 25rem;
+
+  /* Sizing */
+  --spacing-site: 1024px;
+
+  /* Brand color */
+  /* Color:    Purple Heart */
+  /* Source:   https://uicolors.app/generate/6820d6 */
+  --color-brand-50: #f5f3ff;
+  --color-brand-100: #ede8ff;
+  --color-brand-200: #dcd5ff;
+  --color-brand-300: #c4b3ff;
+  --color-brand-400: #a688fd;
+  --color-brand-500: #8a58fa;
+  --color-brand-600: #7d35f2;
+  --color-brand-700: #6820d5;
+  --color-brand-800: #5b1dba;
+  --color-brand-900: #4c1a98;
+  --color-brand-950: #2e0e67;
+  --color-brand: var(--color-brand-600);
+
+  /* Color alias: Success = Emerald with default 500 */
+  --color-success-50: oklch(0.979 0.021 166.113);
+  --color-success-100: oklch(0.95 0.052 163.051);
+  --color-success-200: oklch(0.905 0.093 164.15);
+  --color-success-300: oklch(0.845 0.143 164.978);
+  --color-success-400: oklch(0.765 0.177 163.223);
+  --color-success-500: oklch(0.696 0.17 162.48);
+  --color-success-600: oklch(0.596 0.145 163.225);
+  --color-success-700: oklch(0.508 0.118 165.612);
+  --color-success-800: oklch(0.432 0.095 166.913);
+  --color-success-900: oklch(0.378 0.077 168.94);
+  --color-success-950: oklch(0.262 0.051 172.552);
+  --color-success: var(--color-success-600);
+
+  /* Color alias: Error = Rose with default 500 */
+  --color-error-50: oklch(0.969 0.015 12.422);
+  --color-error-100: oklch(0.941 0.03 12.58);
+  --color-error-200: oklch(0.892 0.058 10.001);
+  --color-error-300: oklch(0.81 0.117 11.638);
+  --color-error-400: oklch(0.712 0.194 13.428);
+  --color-error-500: oklch(0.645 0.246 16.439);
+  --color-error-600: oklch(0.586 0.253 17.585);
+  --color-error-700: oklch(0.514 0.222 16.935);
+  --color-error-800: oklch(0.455 0.188 13.697);
+  --color-error-900: oklch(0.41 0.159 10.272);
+  --color-error-950: oklch(0.271 0.105 12.094);
+  --color-error: var(--color-error-600);
+
+  /* Color alias: Warning = Amber with default 500 */
+  --color-warning-50: oklch(0.987 0.022 95.277);
+  --color-warning-100: oklch(0.962 0.059 95.617);
+  --color-warning-200: oklch(0.924 0.12 95.746);
+  --color-warning-300: oklch(0.879 0.169 91.605);
+  --color-warning-400: oklch(0.828 0.189 84.429);
+  --color-warning-500: oklch(0.769 0.188 70.08);
+  --color-warning-600: oklch(0.666 0.179 58.318);
+  --color-warning-700: oklch(0.555 0.163 48.998);
+  --color-warning-800: oklch(0.473 0.137 46.201);
+  --color-warning-900: oklch(0.414 0.112 45.904);
+  --color-warning-950: oklch(0.279 0.077 45.635);
+  --color-warning: var(--color-warning-600);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-gradient {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+@keyframes hue-shift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.AnimatedBackground {
+  background-image: url("/assets/food-background.png");
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    background: linear-gradient(
+      var(--gradient-angle),
+      var(--color-red-300),
+      var(--color-purple-300)
+    );
+    animation:
+      spin-gradient 30s linear infinite,
+      hue-shift 30s linear infinite;
+    opacity: 0.5;
+  }
+}
+
+@keyframes slow-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(calc(-1 * var(--bob-amount, 10px)));
+  }
+}
+
+.animate-slow-bob {
+  animation: slow-bob 3s ease-in-out infinite;
+}

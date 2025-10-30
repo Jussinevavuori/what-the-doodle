@@ -1,0 +1,20 @@
+{
+	"name": "@wtd/shared",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"exports": {
+		"./*": "./src/*.ts",
+		"./*.ts": "./src/*.ts",
+		"./*.tsx": "./src/*.tsx"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"zod": "^4.1.12"
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"editor.rulers": [
+		100
+	],
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "explicit",
+		"source.fixAll": "always",
+	},
+	"files.watcherExclude": {
+		"**/routeTree.gen.ts": true,
+		"what-the-doodle-client/**": true,
+		"what-the-doodle-server/**": true
+	},
+	"search.exclude": {
+		"**/routeTree.gen.ts": true,
+		"what-the-doodle-client/**": true,
+		"what-the-doodle-server/**": true
+	},
+	"files.readonlyInclude": {
+		"**/routeTree.gen.ts": true,
+		"what-the-doodle-client/**": true,
+		"what-the-doodle-server/**": true
+	}
+}
