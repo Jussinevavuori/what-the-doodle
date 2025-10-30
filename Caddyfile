@@ -5,13 +5,9 @@ whatthedoodle.jussinevavuori.com {
   @api path /api/*
   handle @api {
     uri strip_prefix /api
-    reverse_proxy wtd-server:8080 {
-      transport http {
-        versions h2c 1.1
-      }
-    }
+    reverse_proxy http://wtd-server:8080
   }
-  
+
   # Frontend -> NGINX server
   handle {
     reverse_proxy http://wtd-client:5173
