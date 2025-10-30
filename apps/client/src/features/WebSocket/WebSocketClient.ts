@@ -2,7 +2,9 @@ import { UserIdAtom } from "@/stores/UserIdAtom";
 import type { ClientMessage, ServerMessage } from "@wtd/shared/schemas";
 import { ServerMessageSchema } from "@wtd/shared/schemas";
 
-const ws = new WebSocket(`ws://${window.location.host}/api/ws`);
+// Connect to websocket at /api/ws under same domain (use wss if over https)
+const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
+const ws = new WebSocket(`${wsProtocol}://${window.location.host}/api/ws`);
 
 ws.addEventListener("message", async (event) => {
   try {
