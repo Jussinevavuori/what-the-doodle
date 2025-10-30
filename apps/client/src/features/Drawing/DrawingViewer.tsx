@@ -45,7 +45,7 @@ export function DrawingViewer(props: DrawingViewerProps) {
         <img
           src={`data:image/jpeg;base64,${jpgBase64}`}
           alt="Player's drawing"
-          className="mx-auto rounded-xl"
+          className="mx-auto h-full w-full rounded-xl object-contain object-center"
         />
       )}
     </div>

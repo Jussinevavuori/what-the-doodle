@@ -1,5 +1,6 @@
 import { MAX_PLAYERS, MIN_PLAYERS } from "@wtd/shared/consts";
 import type { ClientMessage, ServerMessage } from "@wtd/shared/schemas";
+import prettyBytes from "pretty-bytes";
 import type { WebSocketData } from "..";
 import { Player } from "./Player";
 import { PlayerRegistry } from "./PlayerRegistry";
@@ -22,7 +23,15 @@ export async function handleClientMessage(
   message: ClientMessage,
 ) {
   const player = Players.getPlayer(userId);
-  console.log("🔥", message);
+
+  // Log with some modifications
+  {
+    const { type, ...logMessage } = message;
+    if ("jpgBase64" in logMessage && typeof logMessage.jpgBase64 === "string") {
+      logMessage.jpgBase64 = `JPG (${prettyBytes(logMessage.jpgBase64.length)})`;
+    }
+    console.log(`🔥 ${type}`, logMessage);
+  }
 
   switch (message.type) {
     /**

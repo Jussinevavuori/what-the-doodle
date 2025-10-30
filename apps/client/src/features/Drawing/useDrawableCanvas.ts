@@ -173,6 +173,7 @@ export function useDrawableCanvas(options: UserDrawableCanvasOptions = {}) {
 
       // Initialize context settings
       setTimeout(() => {
+        // Setup drawing settings
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
         ctx.strokeStyle = selectedColor;
@@ -195,6 +196,10 @@ export function useDrawableCanvas(options: UserDrawableCanvasOptions = {}) {
 
     // Initial resizing
     resize();
+
+    // Initialize with white background
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Save context
     canvas2dContextRef.current = ctx;
@@ -295,7 +300,7 @@ export function useDrawableCanvas(options: UserDrawableCanvasOptions = {}) {
       const y = Math.floor((e.clientY - r.top) * dpr);
       const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const floodFill = new FloodFill(imgData);
-      floodFill.fill(String(ctx.strokeStyle), x, y, 100);
+      floodFill.fill(String(ctx.strokeStyle), x, y, 0);
       ctx.putImageData(floodFill.imageData, 0, 0);
 
       // Trigger onDraw callback

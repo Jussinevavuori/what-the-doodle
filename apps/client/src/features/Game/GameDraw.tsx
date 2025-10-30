@@ -4,6 +4,7 @@ import type { RoomDTO } from "@wtd/shared/schemas";
 import { useAtom } from "@xstate/store/react";
 import { PenIcon } from "lucide-react";
 import { Canvas } from "../Drawing/Canvas";
+import { optimizeClientSideFile } from "../Drawing/optimizeClientSideFile";
 import { WebSocketClient } from "../WebSocket/WebSocketClient";
 import { RoomClock } from "./RoomClock";
 
@@ -38,7 +39,10 @@ export function GameDraw(props: GameDrawProps) {
             type: "SUBMIT_DRAWING",
             roomId: props.room.id,
             drawingId: drawing.id,
-            jpgBase64: await blobToBase64(jpgBlob),
+            jpgBase64: await blobToBase64(
+              // Make sure to optimize the image before sending
+              await optimizeClientSideFile(jpgBlob, { maxDim: 360 }),
+            ),
           });
         }}
         debounceOnDrawMs={2000}

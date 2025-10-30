@@ -30,17 +30,21 @@ export function RoomForm() {
     return true;
   }
 
+  function cleanRoomId(room: string) {
+    return room.trim().toLowerCase().split("/").pop() || "";
+  }
+
   function handleCreateRoom() {
-    const roomId = generateRoomName();
-    if (canJoinRoom(roomId)) {
-      router.navigate({ to: "/r/$roomId", params: { roomId } });
+    const generatedRoomId = generateRoomName();
+    if (canJoinRoom(generatedRoomId)) {
+      router.navigate({ to: "/r/$roomId", params: { roomId: cleanRoomId(generatedRoomId) } });
     }
   }
 
   function handleJoinRoom() {
     if (canJoinRoom(roomId)) {
       if (roomId.trim() === "") return;
-      router.navigate({ to: "/r/$roomId", params: { roomId: roomId.trim() } });
+      router.navigate({ to: "/r/$roomId", params: { roomId: cleanRoomId(roomId) } });
     }
   }
 

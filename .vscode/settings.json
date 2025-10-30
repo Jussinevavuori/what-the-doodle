@@ -20,5 +20,6 @@
 		"**/routeTree.gen.ts": true,
 		"what-the-doodle-client/**": true,
 		"what-the-doodle-server/**": true
-	}
+	},
+	"prettier.prettierPath": "./node_modules/prettier"
 }

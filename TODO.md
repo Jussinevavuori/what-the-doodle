@@ -1,0 +1,2 @@
+- Dev docker-compose.yml setup
+- Redis (via docker-compose) for persisting room data
