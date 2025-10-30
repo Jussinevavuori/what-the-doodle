@@ -1,0 +1,24 @@
+whatthedoodle.jussinevavuori.com {
+  encode zstd gzip
+
+  @api path /api*                # API -> Bun server
+  handle @api {
+    reverse_proxy http://wtd-server:8080
+  }
+
+  handle {                       # SPA from disk
+    root * /srv/static
+    try_files {path} /index.html
+    file_server
+  }
+
+  header {
+    Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    X-Content-Type-Options "nosniff"
+  }
+
+  # optional cache-control for static assets
+  @assets path_regexp static \.(css|js|png|jpg|jpeg|gif|svg|webp|ico|woff2?)$
+  header @assets Cache-Control "public, max-age=31536000, immutable"
+}

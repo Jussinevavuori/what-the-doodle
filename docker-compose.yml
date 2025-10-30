@@ -19,33 +19,23 @@ services:
     expose: ["8080"]
     restart: unless-stopped
 
-  wtd-proxy:
-    container_name: wtd-proxy
-    image: nginx:1.27-alpine
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - certbot-webroot:/var/www/certbot
-      - letsencrypt:/etc/letsencrypt
+  caddy:
+    image: caddy:2-alpine
+    container_name: wtd-caddy
     ports:
       - "80:80"
       - "443:443"
-    depends_on:
-      - wtd-client
-      - wtd-server
-    restart: unless-stopped
-
-  certbot:
-    image: certbot/certbot:latest
-    profiles: ["cert"] # run manually
     volumes:
-      - certbot-webroot:/var/www/certbot
-      - letsencrypt:/etc/letsencrypt
-    command: >
-      certonly --webroot
-      -w /var/www/certbot
-      -d whatthedoodle.jussinevavuori.com
-      --email jussi@nevavuori.fi --agree-tos --no-eff-email
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+      # mount your built client
+      - ./apps/client/dist:/srv/static:ro
+    depends_on:
+      - wtd-server
+    networks:
+      - default
 
 volumes:
-  certbot-webroot:
-  letsencrypt:
+  caddy-data:
+  caddy-config:
