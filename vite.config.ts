@@ -16,6 +16,9 @@ export default defineConfig({
 
   // build optimizations (ChatGPT)
   build: {
+    rollupOptions: {
+      watch: false,
+    },
     sourcemap: false, // default is false; ensure it’s off in CI
     target: "es2022",
     cssMinify: "esbuild", // fastest
